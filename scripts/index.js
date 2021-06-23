@@ -3,6 +3,24 @@ const registerBtn = document.querySelector(".register-btn");
 registerBtn.addEventListener("click", () => {
   // Escribe tu código aquí, siguiendo los siguientes lineamientos paso a paso:
   // 1. Obtenemos el valor ingresado en el input de email
+  const inputs = document.getElementsByTagName('input');
+  let obj ={}
+  for (const input of inputs) {
+    if(['password', 'email'].includes(input.type)){
+      obj[input.name] = input.value;
+    }else if(input.type == 'radio'){
+      // ?. null collation, || evalúa por la condición anterior, si da error, retorna false. 
+      obj[input.name] = document.querySelector('[name=legalAge]:checked')?.value === 'true' || false;
+    }else{
+      obj[input.name] = input.checked;
+    }
+  }
+  console.log(obj);
+  /*
+  for(const key in obj){
+    console.log(key)
+  }
+  */
   // 2. Obtenemos los datos ingresados en el input de password
   // 3. Obtenemos el valor del input radio
   // 4. Obtenemos el valor del input checkbox
